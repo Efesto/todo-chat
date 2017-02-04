@@ -4,9 +4,9 @@ exports.add = function(req, res) {
   models.Todo.create({
     text: req.body.text,
     chat_id: req.body.chat_id
+  }).then(function () {
+      res.send('OK');
   });
-
-  res.send('OK');
 };
 
 exports.index = function(req, res){
@@ -15,6 +15,14 @@ exports.index = function(req, res){
             title: 'Sequelize: Express Example',
             todos: todos
         });
+    });
+};
+
+exports.destroy = function(req, res){
+    models.Todo.findById(req.body.id).then(function(todo) {
+        todo.destroy()
+    }).then(function () {
+        res.send('OK');
     });
 };
 

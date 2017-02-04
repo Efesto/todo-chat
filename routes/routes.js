@@ -4,5 +4,6 @@ exports.register = function(app){
 
     app.get('/', index.index);
     app.post('/todos', todos.add);
+    app.delete('/todos', todos.destroy);
     app.get('/todos', todos.index);
 };
