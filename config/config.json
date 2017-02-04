@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": null,
+    "database": "todo-chat",
+    "host": "localhost",
+    "dialect": "postgresql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "todo-chat_test",
+    "host": "localhost",
+    "dialect": "postgresql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "todo-chat",
+    "host": "127.0.0.1",
+    "dialect": "postgresql"
+  }
+}
