@@ -14,10 +14,6 @@
     "dialect": "postgresql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "todo-chat",
-    "host": "127.0.0.1",
-    "dialect": "postgresql"
+    "use_env_variable": "DATABASE_URL"
   }
 }
