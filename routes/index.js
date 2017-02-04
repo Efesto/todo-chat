@@ -1,9 +1,4 @@
-var express = require('express');
-var router = express.Router();
+exports.index = function(req, res) {
+ res.render('index', { title: 'Todo Chat' });
+};
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Todo Chat' });
-});
-
-module.exports = router;
