@@ -11,3 +11,5 @@ block content
       tr
         td #{todo.id}
         td #{todo.text}
+        td
+          a(onclick='window.DeleteTodo(this, #{todo.id})') delete me

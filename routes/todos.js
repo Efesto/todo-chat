@@ -19,7 +19,7 @@ exports.index = function(req, res){
 };
 
 exports.destroy = function(req, res){
-    models.Todo.findById(req.body.id).then(function(todo) {
+    models.Todo.findById(req.params.id).then(function(todo) {
         todo.destroy()
     }).then(function () {
         res.send('OK');

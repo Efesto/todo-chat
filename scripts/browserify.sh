@@ -1,0 +1,1 @@
+node_modules/.bin/browserify bin/frontend.js -o public/javascripts/main.js
