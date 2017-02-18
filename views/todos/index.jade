@@ -7,9 +7,5 @@ block content
   table
     th Id
     th Text
-    each todo in todos
-      tr
-        td #{todo.id}
-        td #{todo.text}
-        td
-          a(onclick='window.DeleteTodo(this, #{todo.id})') delete me
+      div(id='todoList')
+  a(onclick='window.RefreshTodoList()') Refresh da bitcha

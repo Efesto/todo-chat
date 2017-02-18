@@ -1,16 +1,16 @@
-var models = require('../models');
+let models = require('../models');
 
-exports.add = function(req, res) {
+exports.add = (req, res) => {
   models.Todo.create({
     text: req.body.text,
     chat_id: req.body.chat_id
-  }).then(function () {
+  }).then(() => {
       res.send('OK');
   });
 };
 
-exports.index = function(req, res){
-    models.Todo.findAll().then(function(todos) {
+exports.index = (req, res) => {
+    models.Todo.findAll().then((todos) => {
         res.render('todos/index', {
             title: 'Sequelize: Express Example',
             todos: todos
@@ -18,10 +18,16 @@ exports.index = function(req, res){
     });
 };
 
-exports.destroy = function(req, res){
-    models.Todo.findById(req.params.id).then(function(todo) {
+exports.todoList = (req, res) => {
+    models.Todo.findAll().then((todos) => {
+        res.json(todos)
+    })
+};
+
+exports.destroy = (req, res) => {
+    models.Todo.findById(req.params.id).then((todo) => {
         todo.destroy()
-    }).then(function () {
+    }).then(() => {
         res.send('OK');
     });
 };

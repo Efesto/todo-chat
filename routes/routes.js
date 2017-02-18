@@ -1,7 +1,8 @@
-exports.register = function(app){
-    var todos = require('./todos');
+exports.register = (app) => {
+    let todos = require('./todos');
 
     app.post('/todos', todos.add);
     app.delete('/todos/:id', todos.destroy);
     app.get('/', todos.index);
+    app.get('/todos', todos.todoList);
 };
