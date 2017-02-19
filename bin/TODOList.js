@@ -1,6 +1,5 @@
 const React = require('react');
 const TODOElement = require('./TODOElement');
-const $ = require('jquery');
 
 class TODOList extends React.Component {
 
@@ -14,13 +13,9 @@ class TODOList extends React.Component {
     }
 
     refreshState() {
-        console.log('refresh state');
-            $.ajax({
-                url: '/todos',
-                success: (data) => {
-                    this.setState({todos: data});
-                }
-            })
+        fetch('/todos')
+        .then((data) => data.json())
+        .then((dataJson) => this.setState({todos: dataJson}))
     }
 
     render(){
