@@ -12,7 +12,7 @@ class TODOElement extends React.Component {
         return(
             <tr>
                 <td>{this.props.todoId}</td><td>{this.props.text}</td>
-                <td><a href='' onClick={this.deleteTodo.bind(this)}>Delete me</a></td>
+                <td><a href='#' onClick={this.deleteTodo.bind(this)}>Delete me</a></td>
             </tr>
         )
     }

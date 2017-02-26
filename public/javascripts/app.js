@@ -34,7 +34,7 @@ class TODOElement extends React.Component {
                 null,
                 React.createElement(
                     'a',
-                    { onClick: this.deleteTodo.bind(this) },
+                    { href: '#', onClick: this.deleteTodo.bind(this) },
                     'Delete me'
                 )
             )
@@ -93,7 +93,7 @@ class TODOList extends React.Component {
                         )
                     ),
                     this.state.todos.map(todo => {
-                        return React.createElement(TODOElement, { todoId: todo.id, text: todo.text });
+                        return React.createElement(TODOElement, { key: todo.id, todoId: todo.id, text: todo.text });
                     })
                 )
             )
