@@ -12,7 +12,7 @@ class TODOElement extends React.Component {
     deleteTodo() {
         fetch('/todos/' + this.props.todoId, {
             method: 'DELETE'
-        }).then(res => console.log('need to unmount component'));
+        }).then(res => this.props.deleteTODO);
     }
 
     render() {
@@ -56,10 +56,10 @@ class TODOList extends React.Component {
     }
 
     componentDidMount() {
-        this.refreshState();
+        this.update();
     }
 
-    refreshState() {
+    update() {
         fetch('/todos').then(data => data.json()).then(dataJson => this.setState({ todos: dataJson }));
     }
 
@@ -93,7 +93,12 @@ class TODOList extends React.Component {
                         )
                     ),
                     this.state.todos.map(todo => {
-                        return React.createElement(TODOElement, { key: todo.id, todoId: todo.id, text: todo.text });
+                        return React.createElement(TODOElement, {
+                            key: todo.id,
+                            todoId: todo.id,
+                            text: todo.text,
+                            deleteTODO: this.update()
+                        });
                     })
                 )
             )

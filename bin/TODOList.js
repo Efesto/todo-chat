@@ -9,10 +9,10 @@ class TODOList extends React.Component {
     }
 
     componentDidMount() {
-        this.refreshState();
+        this.update();
     }
 
-    refreshState() {
+    update() {
         fetch('/todos')
         .then((data) => data.json())
         .then((dataJson) => this.setState({todos: dataJson}))
@@ -28,7 +28,12 @@ class TODOList extends React.Component {
                             <th>ID</th><th>Text</th>
                         </tr>
                         {this.state.todos.map((todo) => {
-                            return <TODOElement key={todo.id} todoId={todo.id} text={todo.text}/>;
+                            return <TODOElement
+                                key={todo.id}
+                                todoId={todo.id}
+                                text={todo.text}
+                                deleteTODO={this.update()}
+                            />;
                             })
                         }
                     </tbody>

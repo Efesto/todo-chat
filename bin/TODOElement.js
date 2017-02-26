@@ -5,7 +5,7 @@ class TODOElement extends React.Component {
         fetch('/todos/' + this.props.todoId, {
             method: 'DELETE'
         })
-        .then((res) => console.log('need to unmount component'));
+        .then((res) => this.props.deleteTODO);
     }
 
     render(){
