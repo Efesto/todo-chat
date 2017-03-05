@@ -32,7 +32,7 @@ class TODOList extends React.Component {
                                 key={todo.id}
                                 todoId={todo.id}
                                 text={todo.text}
-                                deleteTODO={this.update()}
+                                update={this.update()}
                             />;
                             })
                         }

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "start-dev" : "watchify -v -w -t [ babelify --presets [ react ] ] bin/App.js -o public/javascripts/app.js & npm start"
   },
   "dependencies": {
     "babel-preset-react": "^6.23.0",

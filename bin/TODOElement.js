@@ -5,7 +5,7 @@ class TODOElement extends React.Component {
         fetch('/todos/' + this.props.todoId, {
             method: 'DELETE'
         })
-        .then((res) => this.props.deleteTODO);
+        .then((res) => this.props.update);
     }
 
     render(){
@@ -17,5 +17,11 @@ class TODOElement extends React.Component {
         )
     }
 }
+
+TODOElement.PropTypes = {
+    todoId: React.PropTypes.number,
+    text: React.PropTypes.text,
+    update: React.PropTypes.func.isRequired
+};
 
 module.exports = TODOElement;

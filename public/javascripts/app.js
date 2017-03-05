@@ -12,7 +12,7 @@ class TODOElement extends React.Component {
     deleteTodo() {
         fetch('/todos/' + this.props.todoId, {
             method: 'DELETE'
-        }).then(res => this.props.deleteTODO);
+        }).then(res => this.props.update);
     }
 
     render() {
@@ -41,6 +41,12 @@ class TODOElement extends React.Component {
         );
     }
 }
+
+TODOElement.PropTypes = {
+    todoId: React.PropTypes.number,
+    text: React.PropTypes.text,
+    update: React.PropTypes.func.isRequired
+};
 
 module.exports = TODOElement;
 
@@ -97,7 +103,7 @@ class TODOList extends React.Component {
                             key: todo.id,
                             todoId: todo.id,
                             text: todo.text,
-                            deleteTODO: this.update()
+                            update: this.update()
                         });
                     })
                 )
