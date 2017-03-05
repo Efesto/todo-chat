@@ -12,9 +12,7 @@ class TODOElement extends React.Component {
     delete() {
         fetch('/todos/' + this.props.todoId, {
             method: 'DELETE'
-        }).then(res => {
-            this.props.onTodoRemove(this.props.todoId);
-        });
+        }).then(res => this.props.onTodoRemove(this.props.todoId));
     }
 
     render() {
@@ -20613,4 +20611,4 @@ module.exports = traverseAllChildren;
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":158}]},{},[1]);
+},{"./lib/React":158}]},{},[1,2,3]);

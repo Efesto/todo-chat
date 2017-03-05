@@ -8,7 +8,7 @@ class TODOElement extends React.Component {
         .then((res) => this.props.onTodoRemove(this.props.todoId))
     }
 
-    render(){
+    render() {
         return(
             <tr>
                 <td>{this.props.todoId}</td><td>{this.props.text}</td>
