@@ -1,18 +1,18 @@
 const React = require('react');
 
 class TODOElement extends React.Component {
-    deleteTodo() {
+    delete() {
         fetch('/todos/' + this.props.todoId, {
             method: 'DELETE'
         })
-        .then((res) => this.props.update);
+        .then((res) => this.props.onTodoRemove(this));
     }
 
     render(){
         return(
             <tr>
                 <td>{this.props.todoId}</td><td>{this.props.text}</td>
-                <td><a href='#' onClick={this.deleteTodo.bind(this)}>Delete me</a></td>
+                <td><a href='#' onClick={this.delete.bind(this)}>Delete me</a></td>
             </tr>
         )
     }
@@ -20,8 +20,7 @@ class TODOElement extends React.Component {
 
 TODOElement.PropTypes = {
     todoId: React.PropTypes.number,
-    text: React.PropTypes.text,
-    update: React.PropTypes.func.isRequired
+    text: React.PropTypes.text
 };
 
 module.exports = TODOElement;

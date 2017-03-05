@@ -9,10 +9,10 @@ ReactDOM.render(React.createElement(TODOList, null), document.getElementById('TO
 const React = require('react');
 
 class TODOElement extends React.Component {
-    deleteTodo() {
+    delete() {
         fetch('/todos/' + this.props.todoId, {
             method: 'DELETE'
-        }).then(res => this.props.update);
+        }).then(res => this.props.onTodoRemove(this));
     }
 
     render() {
@@ -34,7 +34,7 @@ class TODOElement extends React.Component {
                 null,
                 React.createElement(
                     'a',
-                    { href: '#', onClick: this.deleteTodo.bind(this) },
+                    { href: '#', onClick: this.delete.bind(this) },
                     'Delete me'
                 )
             )
@@ -44,8 +44,7 @@ class TODOElement extends React.Component {
 
 TODOElement.PropTypes = {
     todoId: React.PropTypes.number,
-    text: React.PropTypes.text,
-    update: React.PropTypes.func.isRequired
+    text: React.PropTypes.text
 };
 
 module.exports = TODOElement;
@@ -62,11 +61,15 @@ class TODOList extends React.Component {
     }
 
     componentDidMount() {
-        this.update();
+        this.refreshList();
     }
 
-    update() {
+    refreshList() {
         fetch('/todos').then(data => data.json()).then(dataJson => this.setState({ todos: dataJson }));
+    }
+
+    onTodoRemove(node) {
+        //have to remove node from state
     }
 
     render() {
@@ -103,7 +106,7 @@ class TODOList extends React.Component {
                             key: todo.id,
                             todoId: todo.id,
                             text: todo.text,
-                            update: this.update()
+                            onUpdate: this.onUpdate.bind(this)
                         });
                     })
                 )

@@ -9,13 +9,17 @@ class TODOList extends React.Component {
     }
 
     componentDidMount() {
-        this.update();
+        this.refreshList();
     }
 
-    update() {
+    refreshList() {
         fetch('/todos')
         .then((data) => data.json())
         .then((dataJson) => this.setState({todos: dataJson}))
+    }
+
+    onTodoRemove(node) {
+        //have to remove node from state
     }
 
     render(){
@@ -32,7 +36,7 @@ class TODOList extends React.Component {
                                 key={todo.id}
                                 todoId={todo.id}
                                 text={todo.text}
-                                update={this.update()}
+                                onUpdate={this.onUpdate.bind(this)}
                             />;
                             })
                         }
