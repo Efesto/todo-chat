@@ -5,7 +5,7 @@ class TODOElement extends React.Component {
         fetch('/todos/' + this.props.todoId, {
             method: 'DELETE'
         })
-        .then((res) => this.props.onTodoRemove(this));
+        .then((res) => this.props.onTodoRemove(this.props.todoId))
     }
 
     render(){

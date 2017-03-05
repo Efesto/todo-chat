@@ -12,7 +12,9 @@ class TODOElement extends React.Component {
     delete() {
         fetch('/todos/' + this.props.todoId, {
             method: 'DELETE'
-        }).then(res => this.props.onTodoRemove(this));
+        }).then(res => {
+            this.props.onTodoRemove(this.props.todoId);
+        });
     }
 
     render() {
@@ -65,11 +67,17 @@ class TODOList extends React.Component {
     }
 
     refreshList() {
-        fetch('/todos').then(data => data.json()).then(dataJson => this.setState({ todos: dataJson }));
+        fetch('/todos').then(data => data.json()).then(dataJson => this.setTodos(dataJson));
     }
 
-    onTodoRemove(node) {
-        //have to remove node from state
+    onTodoRemove(todoId) {
+        this.setTodos(this.state.todos.filter(todo => {
+            return todo.id != todoId;
+        }));
+    }
+
+    setTodos(todos) {
+        this.setState({ todos: todos });
     }
 
     render() {
@@ -106,7 +114,7 @@ class TODOList extends React.Component {
                             key: todo.id,
                             todoId: todo.id,
                             text: todo.text,
-                            onUpdate: this.onUpdate.bind(this)
+                            onTodoRemove: this.onTodoRemove.bind(this)
                         });
                     })
                 )

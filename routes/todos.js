@@ -12,7 +12,7 @@ exports.add = (req, res) => {
 exports.index = (req, res) => {
     models.Todo.findAll().then((todos) => {
         res.render('todos/index', {
-            title: 'Sequelize: Express Example',
+            title: 'TODO Chat',
             todos: todos
         });
     });
