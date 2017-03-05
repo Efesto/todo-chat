@@ -29,23 +29,16 @@ class TODOList extends React.Component {
     render(){
         return (
             <div>
-                <h1>I am TODOList</h1>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>ID</th><th>Text</th>
-                        </tr>
-                        {this.state.todos.map((todo) => {
-                            return <TODOElement
-                                key={todo.id}
-                                todoId={todo.id}
-                                text={todo.text}
-                                onTodoRemove={this.onTodoRemove.bind(this)}
-                            />;
-                            })
-                        }
-                    </tbody>
-                </table>
+                <h1>TODOs</h1>
+                {this.state.todos.map((todo) => {
+                    return <TODOElement
+                        key={todo.id}
+                        todoId={todo.id}
+                        text={todo.text}
+                        onTodoRemove={this.onTodoRemove.bind(this)}
+                    />;
+                    })
+                }
             </div>
         )
     }

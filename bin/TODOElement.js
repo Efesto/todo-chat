@@ -1,4 +1,7 @@
+const Button = require('react-bootstrap/lib/Button');
+const Panel = require('react-bootstrap/lib/Panel');
 const React = require('react');
+
 
 class TODOElement extends React.Component {
     delete() {
@@ -10,10 +13,10 @@ class TODOElement extends React.Component {
 
     render() {
         return(
-            <tr>
-                <td>{this.props.todoId}</td><td>{this.props.text}</td>
-                <td><a href='#' onClick={this.delete.bind(this)}>Delete me</a></td>
-            </tr>
+            <Panel>
+                <Panel>{this.props.todoId} - {this.props.text}</Panel>
+                <Button bsStyle="danger" onClick={this.delete.bind(this)}>Delete me</Button>
+            </Panel>
         )
     }
 }
