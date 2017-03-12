@@ -30,9 +30,15 @@ class TODOElement extends React.Component {
         this.setState({ editMode: !this.state.editMode });
     }
 
-    updateText() {
-        console.log('update text');
+    updateText(event) {
+        let value = event.target.value;
+        this.setState({ text: value });
+
         //TODO update text
+    }
+
+    text() {
+        return this.state.text == undefined ? this.props.text : this.state.text;
     }
 
     render() {
@@ -48,7 +54,7 @@ class TODOElement extends React.Component {
                     React.createElement(
                         Col,
                         { xs: 6 },
-                        this.state.editMode ? React.createElement(FormControl, { onChange: this.updateText.bind(this), defaultValue: this.props.text }) : `${this.props.todoId} - ${this.props.text}`
+                        this.state.editMode ? React.createElement(FormControl, { onChange: this.updateText.bind(this), defaultValue: this.text() }) : `${this.props.todoId} - ${this.text()}`
                     ),
                     React.createElement(
                         Col,
