@@ -30,11 +30,25 @@ class TODOElement extends React.Component {
         this.setState({ editMode: !this.state.editMode });
     }
 
+    updateTextOnEnter(event) {
+        if (event.key == 'Enter') {
+            this.updateText(event);
+        }
+    }
+
     updateText(event) {
         let value = event.target.value;
         this.setState({ text: value });
 
-        //TODO update text
+        fetch('/todos/' + this.props.todoId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'text': value
+            })
+        }).then(res => this.toggleEditMode());
     }
 
     text() {
@@ -54,7 +68,7 @@ class TODOElement extends React.Component {
                     React.createElement(
                         Col,
                         { xs: 6 },
-                        this.state.editMode ? React.createElement(FormControl, { onChange: this.updateText.bind(this), defaultValue: this.text() }) : `${this.props.todoId} - ${this.text()}`
+                        this.state.editMode ? React.createElement(FormControl, { onKeyPress: this.updateTextOnEnter.bind(this), defaultValue: this.text() }) : `${this.props.todoId} - ${this.text()}`
                     ),
                     React.createElement(
                         Col,

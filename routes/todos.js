@@ -19,7 +19,9 @@ exports.index = (req, res) => {
 };
 
 exports.todoList = (req, res) => {
-    models.Todo.findAll().then((todos) => {
+    models.Todo.findAll({
+        order: 'id ASC'
+    }).then((todos) => {
         res.json(todos)
     })
 };
@@ -30,5 +32,14 @@ exports.destroy = (req, res) => {
     }).then(() => {
         res.send('OK');
     });
+};
+
+exports.update = (req, res) => {
+    models.Todo.findById(req.params.id).then((todo) => {
+        todo.text = req.body.text;
+        todo.save().then(() => {
+            res.send(`${req.body.text}`);
+        });
+    })
 };
 
