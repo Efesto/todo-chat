@@ -10,11 +10,8 @@ exports.add = (req, res) => {
 };
 
 exports.index = (req, res) => {
-    models.Todo.findAll().then((todos) => {
-        res.render('todos/index', {
-            title: 'TODO Chat',
-            todos: todos
-        });
+    res.render('todos/index', {
+        title: 'TODO Chat',
     });
 };
 

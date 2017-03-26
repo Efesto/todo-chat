@@ -1,22 +1,63 @@
 const React = require('react');
 const FormControl = require('react-bootstrap/lib/FormControl');
-
 class Chat extends React.Component {
     constructor() {
         super();
-        this.state = {messages: []};
+        this.state = {messages: [], session: this.session()};
+    }
+
+    componentDidMount() {
+        this.refreshMessages();
+    }
+
+    refreshMessages() {
+        fetch('/chat_messages')
+            .then((data) => data.json())
+            .then((dataJson) => this.setState({messages: dataJson}))
+    }
+
+    session() {
+        let key = 'todo_chat-session_id';
+        if (localStorage.getItem(key) == '') {
+            localStorage.setItem(key, require('../Guid'));
+        }
+
+        return localStorage.getItem(key);
     }
 
     sendMessage(event) {
         if (event.key == 'Enter') {
             let message = {
-                body: event.target.value,
-                sender: 'me'
+                text: event.target.value,
+                senderId: this.state.session
             };
 
-            this.setState({messages: this.state.messages.concat(message)});
-            event.target.value = ''
+            fetch('/chat_messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'text': message.text,
+                    'senderId': message.senderId
+                })
+            }).then(() => {
+                this.setState({messages: this.state.messages.concat(message)});
+                }
+            );
+
+            event.target.value = '';
         }
+    }
+
+    senderClass(message) {
+        console.log(this.state.session);
+        console.log(message.senderId);
+        if(message.senderId == this.state.session)
+            return 'me';
+        else
+            return 'other';
+
     }
 
     render() {
@@ -27,7 +68,7 @@ class Chat extends React.Component {
                     {this.state.messages.map((message) => {
                         return (
                             <div className="message_container">
-                                <span className={`message message_from-${message.sender}`}>{message.body}</span>
+                                <span className={`message message_from-${this.senderClass(message)}`}>{message.text}</span>
                             </div>
                         )
                     })}
