@@ -53,7 +53,7 @@ class Chat extends React.Component {
     senderClass(message) {
         console.log(this.state.session);
         console.log(message.senderId);
-        if(message.senderId == this.state.session)
+        if(message.senderId === this.state.session)
             return 'me';
         else
             return 'other';
