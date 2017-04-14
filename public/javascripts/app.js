@@ -188,7 +188,7 @@ class Chat extends React.Component {
     constructor() {
         super();
 
-        let connection = new WebSocket(`wss://${window.location.hostname}:1337`);
+        let connection = new WebSocket(location.origin.replace(/^http/, 'ws'));
         connection.onopen = () => {
             console.log('Websocket connection open');
         };
@@ -289,7 +289,7 @@ var http = require('http');
 var websocketserver = new require('websocket').server;
 
 let wsServer = http.createServer();
-wsServer.listen('1337');
+wsServer.listen('3000');
 
 let daRealWebSocketServer = new websocketserver({
     // WebSocket server is tied to a HTTP server. WebSocket request is just
