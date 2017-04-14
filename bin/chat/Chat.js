@@ -2,6 +2,17 @@ const React = require('react');
 const FormControl = require('react-bootstrap/lib/FormControl');
 class Chat extends React.Component {
 
+    guid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+    }
+
     constructor() {
         super();
 
@@ -34,8 +45,9 @@ class Chat extends React.Component {
 
     session() {
         let key = 'todo_chat-session_id';
-        if (localStorage.getItem(key) == '') {
-            localStorage.setItem(key, require('../Guid'));
+        console.log(localStorage.getItem(key));
+        if (localStorage.getItem(key) == null) {
+            localStorage.setItem(key, this.guid());
         }
 
         return localStorage.getItem(key);
