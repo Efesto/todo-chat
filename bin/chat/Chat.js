@@ -5,7 +5,7 @@ class Chat extends React.Component {
     constructor() {
         super();
 
-        let connection = new WebSocket(`ws://${window.location.hostname}:1337`);
+        let connection = new WebSocket(`wss://${window.location.hostname}:1337`);
         connection.onopen = () => {
             console.log('Websocket connection open');
         };
