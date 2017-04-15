@@ -1,11 +1,10 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var ChatMessage = sequelize.define('ChatMessage', {
+module.exports = (sequelize, DataTypes) => {
+    var ChatMessage = sequelize.define('ChatMessage', {
     text: DataTypes.STRING,
       senderId: DataTypes.STRING,
   }, {
     classMethods: {
-      associate: function(models) {
+      associate: (models) => {
         // associations can be defined here
       }
     }

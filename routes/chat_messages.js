@@ -4,8 +4,8 @@ exports.index = (req, res) => {
     models.ChatMessage.findAll({
         order: '"createdAt" ASC'
     }).then((messages) => {
-        res.json(messages)
-    })
+        res.json(messages);
+    });
 };
 
 exports.add = (req, res) => {

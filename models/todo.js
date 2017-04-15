@@ -1,5 +1,4 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
   var Todo = sequelize.define('Todo', {
     text: DataTypes.STRING,
     chat_id: DataTypes.INTEGER
