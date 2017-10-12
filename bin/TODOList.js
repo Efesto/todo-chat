@@ -15,15 +15,15 @@ class TODOList extends React.Component {
     refreshList() {
         fetch('/todos')
         .then((data) => data.json())
-        .then((dataJson) => this.setTodos(dataJson))
+        .then((dataJson) => this.setTodos(dataJson));
     }
 
     onTodoRemove(todoId) {
-        this.setTodos(this.state.todos.filter((todo) => {return todo.id != todoId}))
+        this.setTodos(this.state.todos.filter((todo) => {return todo.id != todoId}));
     }
 
     setTodos(todos) {
-        this.setState({todos: todos})
+        this.setState({todos: todos});
     }
 
     render(){
@@ -40,7 +40,7 @@ class TODOList extends React.Component {
                     })
                 }
             </div>
-        )
+        );
     }
 }
 

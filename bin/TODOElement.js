@@ -25,7 +25,7 @@ class TODOElement extends React.Component {
     }
 
     updateTextOnEnter(event) {
-        if (event.key == 'Enter') {
+        if (event.key === 'Enter') {
             this.updateText(event);
         }
     }
@@ -46,7 +46,7 @@ class TODOElement extends React.Component {
     }
 
     text() {
-        return this.state.text == undefined ? this.props.text : this.state.text;
+        return this.state.text === undefined ? this.props.text : this.state.text;
     }
 
     render() {
