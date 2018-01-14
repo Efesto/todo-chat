@@ -1,10 +1,10 @@
-const Button = require('react-bootstrap/lib/Button');
-const Panel = require('react-bootstrap/lib/Panel');
-const Grid = require('react-bootstrap/lib/Grid');
-const Row = require('react-bootstrap/lib/Row');
-const Col = require('react-bootstrap/lib/Col');
-const FormControl = require('react-bootstrap/lib/FormControl');
-const React = require('react');
+import Button from 'react-bootstrap/lib/Button'
+import Panel from 'react-bootstrap/lib/Panel'
+import Grid from 'react-bootstrap/lib/Grid'
+import Row from 'react-bootstrap/lib/Row'
+import Col from 'react-bootstrap/lib/Col'
+import FormControl from 'react-bootstrap/lib/FormControl'
+import React from 'react'
 
 
 class TODOElement extends React.Component {
@@ -46,7 +46,7 @@ class TODOElement extends React.Component {
     }
 
     text() {
-        return this.state.text === undefined ? this.props.text : this.state.text;
+        return this.state.text === null ? this.props.text : this.state.text;
     }
 
     render() {

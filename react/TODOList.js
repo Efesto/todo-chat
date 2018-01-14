@@ -1,5 +1,5 @@
-const React = require('react');
-const TODOElement = require('./TODOElement');
+import React from 'react'
+import TODOElement from './TODOElement';
 
 class TODOList extends React.Component {
 
@@ -19,7 +19,7 @@ class TODOList extends React.Component {
     }
 
     onTodoRemove(todoId) {
-        this.setTodos(this.state.todos.filter((todo) => {return todo.id != todoId}));
+        this.setTodos(this.state.todos.filter((todo) => {return todo.id !== todoId}));
     }
 
     setTodos(todos) {

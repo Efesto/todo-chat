@@ -1,5 +1,4 @@
-const React = require('react');
-const FormControl = require('react-bootstrap/lib/FormControl');
+import React from 'react';
 class Chat extends React.Component {
 
     guid() {
@@ -46,7 +45,7 @@ class Chat extends React.Component {
     session() {
         let key = 'todo_chat-session_id';
         console.log(localStorage.getItem(key));
-        if (localStorage.getItem(key) == null) {
+        if (localStorage.getItem(key) === null) {
             localStorage.setItem(key, this.guid());
         }
 
@@ -54,7 +53,7 @@ class Chat extends React.Component {
     }
 
     sendMessage(event) {
-        if (event.key == 'Enter') {
+        if (event.key === 'Enter') {
             let message = {
                 text: event.target.value,
                 senderId: this.state.session

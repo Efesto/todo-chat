@@ -1,15 +1,18 @@
 {
   "name": "todo-chat",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
     "watchify": "watchify -v -w -t [ babelify --presets [ react ] ] bin/*.js -o public/javascripts/app.js",
     "start-dev": "npm run watchify & npm start",
-    "jshint": "jshint models/*.js app.js routes/*.js"
+    "jshint": "jshint models/*.js app.js routes/*.js",
+    "build": "webpack"
   },
   "dependencies": {
-    "babel-preset-react": "^6.23.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "babelify": "^7.3.0",
     "body-parser": "~1.16.0",
     "cookie-parser": "~1.4.3",
@@ -30,9 +33,9 @@
     "websocket": "^1.0.24"
   },
   "devDependencies": {
+    "jshint": "^2.9.4",
     "supervisor": "~0.12.0",
-    "browserify": "^14.0.0",
-    "watchify": "^3.9.0",
-    "jshint": "^2.9.4"
+    "webpack": "^3.10.0",
+    "webpack-node-externals": "^1.6.0"
   }
 }

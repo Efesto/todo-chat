@@ -1,10 +1,7 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const TODOList = require('./TODOList');
-const Chat = require('./chat/Chat');
-const Grid = require('react-bootstrap/lib/Grid');
-const Row = require('react-bootstrap/lib/Row');
-const Col = require('react-bootstrap/lib/Col');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TODOList from './TODOList';
+import Chat from './chat/Chat';
 
 ReactDOM.render(
         <Grid>

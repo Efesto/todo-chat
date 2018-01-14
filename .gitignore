@@ -1,4 +1,5 @@
 todo-chat.iml
 node_modules
 .idea
+.dist
 *.log
