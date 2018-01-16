@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "watchify": "watchify -v -w -t [ babelify --presets [ react ] ] bin/*.js -o public/javascripts/app.js",
     "jshint": "jshint models/*.js app.js routes/*.js",
-    "build": "webpack",
+    "build": "./node_modules/.bin/webpack",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
