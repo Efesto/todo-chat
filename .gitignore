@@ -1,5 +1,5 @@
 todo-chat.iml
 node_modules
 .idea
-.dist
+public/bundle.js
 *.log
