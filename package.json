@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "watchify": "watchify -v -w -t [ babelify --presets [ react ] ] bin/*.js -o public/javascripts/app.js",
     "jshint": "jshint models/*.js app.js routes/*.js",
-    "build": "./node_modules/.bin/webpack",
+    "build": "webpack",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
@@ -30,12 +30,12 @@
     "sequelize": "~3.30.1",
     "sequelize-cli": "~2.5.1",
     "serve-favicon": "~2.3.2",
-    "websocket": "^1.0.24"
+    "websocket": "^1.0.24",
+    "webpack": "^3.10.0",
+    "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {
     "jshint": "^2.9.4",
-    "supervisor": "~0.12.0",
-    "webpack": "^3.10.0",
-    "webpack-node-externals": "^1.6.0"
+    "supervisor": "~0.12.0"
   }
 }
